@@ -12,31 +12,38 @@ body {
 }
 
 nav {
-  width: 100%;
-  height: 25px;
+  width: 15%;
+  height: 100%;
   margin: 0 auto;
   position: fixed;
   color: white;
+  background:rgba( 64, 64, 64, 0.9);
   top: 0;
+  left: 0;
+  background: #404040;
+  background: -webkit-linear-gradient(#262626, #737373, #262626);
+  background: -o-linear-gradient(#262626, #737373, #262626);
+  background: -moz-linear-gradient(#262626, #737373, #262626);
+  background: linear-gradient(#262626, #737373, #262626);
 }
 
 .navagation li {
-  width: 25%;
-  float: left;
+  width: 100%;
+  min-height: 50px;
   list-style-type: none;
+  color: white;
 }
 
 .nav-tab {
-  height: 100%;
-  background:rgba(	139,0,0,0.9);
-  border: 1px solid black;
-  border-radius: 10px 10px;
+  height: 25px;
   text-align: center;
 }
 
-a {
-  text-decoration: none;
-  color: white;
+#logo {
+  height: 100px;
+  width: 100%;
+  background: url('../images/restaurant-logo.png') no-repeat fixed center;
+  background-size: contain;
 }
 
 #content {
@@ -47,18 +54,96 @@ a {
 
 .main {
   margin: 0 auto;
-  padding-top: 100px;
-  width: 1080px;
+  width: 100%;
   height: 100%;
-  background: lightblue;
+  background: white;
   text-align:center;
-  color: red;
+
 }
 
-#menubody {
+
+#home-content {
+  padding-left: 15%;
+}
+
+#dining-welcome {
   margin: 0 auto;
+  width: 100%;
+  height: 100%;
+  background: url('../images/dining-welcome.jpg') no-repeat fixed center ;
+  background-size: cover;
+}
+
+#home-plate-photo {
+  width: 100%;
+  height: 65%;
+  background: url('../images/home-food.jpg') no-repeat center;
+  background-size: cover;
+  text-align: center;
+  position: relative;
+}
+
+#welcome-page{
+  position: absolute;
+  top: 0;
+  bottom:0;
+  left: 0;
+  right: 0;
+  margin: auto;
+  height: 400px;
+  width: 400px;
+  line-height: 400px;
+  border: 1px solid red;
+  color: white;
+}
+
+#welcome-page h1 {
+  
+}
+.background-tint {
   height: 100%;
   width: 100%;
-  background: url('../images/menu.jpg') no-repeat fixed center;
+  background-color: rgba(15,15,15,.6);
+  z-index: 1;
+}
+
+#home-learn-more {
+  width: 100%;
+  margin: 0 auto;
+  margin-top: 5%;
+}
+
+#learn-more-container {
+  width: 80%;
+  margin: 0 auto;
+  background: white;
+}
+
+#home-learn-more li {
+  float: left;
+  width: 25%;
+  border: 1px solid black;
+}
+
+#home-learn-more li p  {
+  font-size: 12px;
+}
+
+#home-learn-more li h1  {
+  font-size: 25px;
+  font-weight: bold;
+  margin: 0 auto;
+}
+
+.circle-icon {
+  display: inline-block;
+  position: relative;
+  width: 80px;
+  height: 80px;
+  border: 1px solid black;
+  border-radius: 50%;
+  background-repeat: no-repeat;
+  background-position: center center;
   background-size: cover;
+  top: -40px;
 }

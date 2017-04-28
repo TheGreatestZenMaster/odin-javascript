@@ -10,9 +10,15 @@ var appendPage = function(page) {
 }
 
 $(function() {  
+  $('nav').hide();
   $('section').hide();
-  $('#home-content').toggle();
+  $('#welcome').show();
   $('.nav-tab').on('click', function(event) {
     appendPage($(this).attr('id'));
+  });
+  
+  $('#dining-welcome').on('click', function(event) {
+    $('nav').toggle();
+    appendPage("home");
   });
 });
