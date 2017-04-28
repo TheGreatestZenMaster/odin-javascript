@@ -17,6 +17,11 @@ wrapper {
   float: left;
   border-right: 1px solid black;
   position: relative;
+  background: #404040;
+  background: -webkit-linear-gradient(#262626, #737373, #262626);
+  background: -o-linear-gradient(#262626, #737373, #262626);
+  background: -moz-linear-gradient(#262626, #737373, #262626);
+  background: linear-gradient(#262626, #737373, #262626);
 }
 
 .sidebar-left div {
@@ -24,18 +29,18 @@ wrapper {
 }
 
 #game-setup {
-  width: 100%;
-  height: 50px;
+  height: 25px;
   margin: 0 auto;
 }
 
 #game-setup ul li {
   float: left;
   width: 25%;
-  border: 1px solid black;
+  border: 1px solid white;
   height: 45px;
   line-height: 45px;
   text-align: center;
+  color: white;
 }
 
 #game-setup p {
@@ -44,9 +49,8 @@ wrapper {
 }
 
 #number-generator {
-  height: 50%;
-  background: white;
-  border-bottom: 1px solid black;
+  height: 35%;
+  border-bottom: 1px solid white;
 }
 
 #next {
@@ -56,27 +60,27 @@ wrapper {
   height: 50px;
   line-height: 50px;
   text-align: center;
-  border: 1px solid black;
-    border-radius: 10px;
+  border: 1px solid white;
+  border-radius: 10px;
+  color: white;
 }
 
 #output-in-words {
   margin: 0 auto;
   width: 85%;
-  height: 150px;
+  height: 80px;
   margin-top: 50px;
-  background: white;
-  line-height: 150px;
+  line-height: 80px;
   text-align: center;
-  border: 1px solid black;
+  border: 1px solid white;
   font-size: 40px;
+  color: white;
 }
 
 #number {
   position: relative;
   margin: 0 auto;
-  height: 50%;
-  background: white;
+  height: 30%;
   line-height: 100%;
   text-align: center;
 }
@@ -84,18 +88,37 @@ wrapper {
 #output-as-number-button {
   margin: 0 auto;
   margin-top: 50px;
-  border: 1px solid black;
+  border: 1px solid white;
   width: 85%;
-  height: 150px;
+  height: 100px;
   line-height: 50px;
   text-align: center;
   font-size: 16px;
+  color: white;
+}
+
+#reset {
+  width: 80%;
+  height: 45px;
+  line-height: 45px;
+  color: white;
+  margin: 0 auto;
+  border: 1px solid red;
+  border-radius: 10px;
+  text-align: center;
+  background: red;
+
 }
 
 .right {
   float: right;
   width: 75%;
   height: 100%;
+  background: #404040;
+  background: -webkit-linear-gradient(#262626, #737373, #262626);
+  background: -o-linear-gradient(#262626, #737373, #262626);
+  background: -moz-linear-gradient(#262626, #737373, #262626);
+  background: linear-gradient(#262626, #737373, #262626);
 }
 
 .col-5-40 {
@@ -110,11 +133,10 @@ wrapper {
   height: 70px;
   width: 100px;
   line-height: 70px;
-  border: 1px solid black;
+  border: 1px solid white;
   border-radius: 10px;
   font-size: 40px;
-  color: black;
-  background: white;
+  color: white;
 }
 .col-5-60 {
   float: left;
@@ -128,11 +150,10 @@ wrapper {
   height: 45px;
   width: 50px;
   line-height: 45px;
-  border: 1px solid black;
+  border: 1px solid white;
   border-radius: 10px;
   font-size: 30px;
-  color: black;
-  background: white;
+  color: white;
 }
 .inPlay {
   background: red !important;
@@ -142,8 +163,13 @@ wrapper {
 #display-wrapper {
   width: 100%;
   height: 100%;
-  background: lightblue;
+  background: white;
   position: relative;
+  background: #404040;
+  background: -webkit-linear-gradient(#262626, #737373, #262626);
+  background: -o-linear-gradient(#262626, #737373, #262626);
+  background: -moz-linear-gradient(#262626, #737373, #262626);
+  background: linear-gradient(#262626, #737373, #262626);
 }
 #numberDisplay {
   position: absolute;
@@ -158,9 +184,10 @@ wrapper {
   font-size: 200px;
   font-weight: bold;
   text-align: center;
-  border: 1px solid black;
+  border: 1px solid white;
   border-radius: 25px;
-  background: white;
+  background: red;
+  color: white;
 }
 
 #bingo-wrapper {
@@ -182,11 +209,10 @@ wrapper {
   width: 15%;
   float: left;
   line-height: 70px;
-  border: 1px solid black;
+  border: 1px solid white;
   border-radius: 10px;
   font-size: 40px;
-  color: black;
-  background: white;
+  color: white;
 }
 
 .clear {

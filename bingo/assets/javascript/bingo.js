@@ -10,6 +10,26 @@ var letters = ['A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'I', 'J', 'K', 'L',
                 
 var lettersInPlay = [''];
 
+var reset = function() {
+  range = 40;
+  rangeABCs = false;
+  lowercase = false;
+  currentNumber = 0;
+  numbersInPlay = [0];
+  previousNumber = 0;
+  letters = ['A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'I', 'J', 'K', 'L',
+                'M', 'N', 'O', 'P', 'Q', 'R', 'S', 'T', 'U', 'V',
+                'W', 'X', 'Y', 'Z'];
+                
+  lettersInPlay = [''];
+  
+  $('#display-wrapper').hide();
+  $('#bingo-wrapper').hide();
+  $('#game-setup').show();
+  $('#output-in-words').html("");
+  $('#bingo-wrapper li').removeClass('inPlay');
+}
+
 var generateRandom = function() {
   var number = 0;
   if (numbersInPlay.length === range + 1) {
@@ -148,41 +168,38 @@ var numberToString = function(number) {
 };
 
 $(function() { 
-  $('#display-wrapper').hide();
-  $('#bingo-wrapper').hide();
-
-  
+  reset();
   $('.start').on('click', function(event) {
     var valueRange = $(this).attr('id');
     switch(valueRange) {
       case 'game-40':
         range = 40;
         $('#bingo-40').show();
-        $('#bingo-abcs').remove();
-        $('#bingo-60').remove();
-        $('#bingo-ABCs').remove();
+        $('#bingo-abcs').hide();
+        $('#bingo-60').hide();
+        $('#bingo-ABCs').hide();
         break;
       case 'game-60':
         range = 60;
         $('#bingo-60').show();
-        $('#bingo-abcs').remove();
-        $('#bingo-40').remove();
-        $('#bingo-ABCs').remove();
+        $('#bingo-abcs').hide();
+        $('#bingo-40').hide();
+        $('#bingo-ABCs').hide();
         break;
       case 'game-ABCs':
         range = 26;
         $('#bingo-ABCs').show();
-        $('#bingo-abcs').remove();
-        $('#bingo-60').remove();
-        $('#bingo-40').remove();
+        $('#bingo-abcs').hide();
+        $('#bingo-60').hide();
+        $('#bingo-40').hide();
         rangeABCs = true;
         break;
       case 'game-abcs':
         range = 26;        
-        $('#bingo-ABCs').remove();
+        $('#bingo-ABCs').hide();
         $('#bingo-abcs').show();
-        $('#bingo-60').remove();
-        $('#bingo-40').remove();
+        $('#bingo-60').hide();
+        $('#bingo-40').hide();
         rangeABCs = true;
         lowercase = true;
         break;
@@ -193,8 +210,8 @@ $(function() {
     $('#bingo-wrapper').show();
   });
   $('#next').on('click', function(event) {
-    if (!$('#'+previousNumber).hasClass("inPlay")) {
-      $('#'+previousNumber).addClass("inPlay");
+    if (!$('.bingo'+previousNumber).hasClass("inPlay")) {
+      $('.bingo'+previousNumber).addClass("inPlay");
     };
     currentNumber = generateRandom();
     var numberInWords = numberToString(currentNumber);
@@ -216,8 +233,15 @@ $(function() {
     else {
       $('#numberDisplay').html(currentNumber);
     }
-    if (!$('#'+currentNumber).hasClass("inPlay")) {
-      $('#'+currentNumber).addClass("inPlay");
+    if (!$('.bingo'+currentNumber).hasClass("inPlay")) {
+      $('.bingo'+currentNumber).addClass("inPlay");
+    }
+    $('#output-in-words').html("");
+  });
+  
+  $('#reset').on('click', function(event) {
+    if (confirm("Did you really want to reset?")) {
+        reset(); 
     }
   });
 });
