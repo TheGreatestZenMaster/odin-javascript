@@ -1,0 +1,50 @@
+* ,
+* :before,
+* :after {
+  -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+        -box-sizing: border-box;
+} 
+
+
+.wrapper {
+  margin: 0 auto;
+  max-width: 625px;
+  padding: 5px;
+  background: lightblue;
+  border: 1px solid red;
+  clear: both;
+}
+
+.gameblock {
+  float: left;
+  width: 15px;
+  height: 15px;
+  border: .5px solid black;
+  background: white;
+}
+
+body {
+}
+
+.clear {
+  clear: both;
+}
+
+.snake {
+  background: black;
+}
+
+fieldset {
+  margin: 0 auto;
+  height: 45px;
+  width: 100px;
+}
+
+.gameover {
+  height: 100%;
+  width: 100%;
+  margin: 0 auto;
+  background: black;
+  color: red;
+}
