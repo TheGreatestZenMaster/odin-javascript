@@ -1,72 +1,80 @@
+/* use_strict */
 const food = {
-    position: [0,0]
+    position: 0
 };
 const board = [];
 const snake = {
-    position: [20,20],
+    position: 741,
     length: 1,
     direction: "d"
 };
-const moveInterval = 0;
 
-for (let i=1; i <= 40; i++) {
-    for (let j=1; j <= 40; j++) {
-        board[board.length] = [i,j];
-    }
+for (var i=1; i <= 1600; i++) {
+    board[board.length] = i;
 }
 
 var generateFood = function() {
-    let x = Math.floor(Math.random() * 40 + 1);
-    let y = Math.floor(Math.random() * 40 + 1);
-    food.position = [x, y];
+    var x = Math.floor(Math.random() * 1600 + 1);
+    food.position = x;
+    $('#' + x).addClass('food');
 };
 
 
-var render = function() {
+var makeBoard = function() {
     $('.wrapper').html('');
     for (let i=0; i < board.length; i++) {
-        if (board[i][0] === snake.position[0] && board[i][1] === snake.position[1]) {
-            $('.wrapper').append('<div class="gameblock snake"></div>');
+        var block = $("<div class='gameblock'></div>");
+        if (board[i] === snake.position) {
+            block.addClass('snake'); 
+            $('.wrapper').append(block);
         }
-        else if (board[i][0] === food.position[0] && board[i][1] === food.position[1]) {
-            $('.wrapper').append('<div class="gameblock food"></div>');
+        else if (board[i]=== food.position) {
+            block.addClass('food'); 
+            $('.wrapper').append(block);
         }
         else {
-            $('.wrapper').append('<div class="gameblock"></div>');
+            block.attr('id', i); 
+            $('.wrapper').append(block);
         }
     }
     $('.wrapper').append('<div class="clear"></div>');
-    if (snake.position[0] === food.position[0] && snake.position[1] === food.position[1]) {
-        snake.length += 1;
-        generateFood();
-    }
 };
 
 
 var move = function() {
+    var currentPosition = snake.position;
+    var nextPosition = 0;
     if (snake.direction === "d") {
-        snake.position[1] = snake.position[1] + 1;
+        nextPosition = snake.position + 1;
     }
     else if (snake.direction === "a") {
-        snake.position[1] = snake.position[1] - 1;
+        nextPosition = snake.position - 1;
     }
     else if (snake.direction === "w") {
-        snake.position[0] = snake.position[0] - 1;
+        nextPosition = snake.position - 40;
     }
     else if (snake.direction === "s"){
-        snake.position[0] = snake.position[0] + 1;
+        nextPosition = snake.position + 40;
     }
-    if (snake.position[0] >= 41 || snake.position[0] <= 0 || snake.position[1] <= 0 || snake.position[1] >= 41){
-        $('.wrapper').html('');
-        $('.wrapper').append('<div class="gameover">GAME OVER</div>');
+    $('#' + currentPosition).removeClass('snake');
+    $('#' + nextPosition).addClass('snake');
+    snake.position = nextPosition;
+    if (snake.position === food.position) {
+        snake.length += 1;
+        $('#' + food.position).removeClass('food');
+        generateFood();
     }
-    else {
-         render();  
-    }
+    //if (snake.position[0] >= 41 || snake.position[0] <= 0 || snake.position[1] <= 0 || snake.position[1] >= 41){
+    //    $('.wrapper').html('');
+    //    $('.wrapper').append('<div class="gameover">GAME OVER</div>');
+    //}
+    //else {
+    //     render();  
+    //}da
 };
 
 $(document).ready(function (){
-    render();
+    makeBoard();
     generateFood();
     $(this).keypress( function(event) {
         var keyPressed = String.fromCharCode(event.keyCode);
@@ -74,7 +82,7 @@ $(document).ready(function (){
             snake.direction = keyPressed;
         }
     });
-    moveInterval = setInterval(move, 50);
+    var moveInterval = setInterval(move, 100);
 });
 
 //  $('.gameover').on('click', function(event) {
