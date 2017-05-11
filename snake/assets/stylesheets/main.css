@@ -51,7 +51,18 @@ fieldset {
   margin: 0 auto;
   background: black;
   color: red;
-  line-height: 500px;
   text-align: center;
   font-size: 48px;
 }
+.gameover p {
+  display:inline-block; 
+  vertical-align:middle; 
+  margin:0 0 0 1em;
+  width:10em}
+.gameover::after {
+  display:inline-block; 
+  line-height:500px; 
+  width:0; 
+  content:"\00A0"; 
+  overflow:hidden; 
+  vertical-align:middle}

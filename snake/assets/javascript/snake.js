@@ -44,9 +44,11 @@ var makeBoard = function() {
 };
 
 
-var gameOver = function() {
+var gameOver = function(message) {
     $('.wrapper').html('');
-    $('.wrapper').append('<div class="gameover">GAME OVER</div>');
+    gameOver = $('div').addClass("gameover");
+    gameOver.html("<p>GAME OVER<br>" + message + "</p>");
+    $('.wrapper').append(gameOver);
 }
 
 var move = function(direction) {
@@ -57,29 +59,34 @@ var move = function(direction) {
     if (snake.direction === "d") {
         nextPosition = snakeHead + 1;
         if (parseInt((nextPosition - 1) / 40) > parseInt((snakeHead - 1) / 40)){
-            gameOver();
+            gameOver("You went out of bounds");
         }
     }
     else if (snake.direction === "a") {
         nextPosition = snakeHead - 1;
         if (parseInt((nextPosition - 1) / 40) < parseInt((snakeHead - 1) / 40)){
-            gameOver();
+            gameOver("You went out of bounds");
         }
     }
     else if (snake.direction === "w") {
         nextPosition = snakeHead - 40;
         if (nextPosition < 0){
-            gameOver();
+            gameOver("You went out of bounds");
         }
     }
     else if (snake.direction === "s"){
         nextPosition = snakeHead + 40;
         if (nextPosition > 1600){
-            gameOver();
+            gameOver("You went out of bounds");
         }
     }
     snake.position.push(nextPosition);
-    $('#' + nextPosition).addClass('snake');
+    if ($('#' + nextPosition).hasClass('snake')) {
+        gameOver("You hit yourself!")
+    }
+    else {
+        $('#' + nextPosition).addClass('snake')
+    }
     if (nextPosition === food.position) {
         $('#' + food.position).removeClass('food');
         generateFood();
@@ -88,8 +95,7 @@ var move = function(direction) {
         $('#' + snakeTail).removeClass('snake');
         snake.position.shift();
     }
-
-
+    
     //if (snake.position[0] >= 41 || snake.position[0] <= 0 || snake.position[1] <= 0 || snake.position[1] >= 41){
     //    
     //}
@@ -113,7 +119,7 @@ $(document).ready(function (){
             }
         }
     });
-    var moveInterval = setInterval(move, 500);
+    var moveInterval = setInterval(move, 100);
 });
 
 //  $('.gameover').on('click', function(event) {
