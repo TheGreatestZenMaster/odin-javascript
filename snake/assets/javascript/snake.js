@@ -4,7 +4,7 @@ const food = {
 };
 const board = [];
 const snake = {
-    position: 741,
+    position: [741],
     length: 1,
     direction: "d"
 };
@@ -24,6 +24,7 @@ var makeBoard = function() {
     $('.wrapper').html('');
     for (let i=0; i < board.length; i++) {
         var block = $("<div class='gameblock'></div>");
+        block.attr('id', i); 
         if (board[i] === snake.position) {
             block.addClass('snake'); 
             $('.wrapper').append(block);
@@ -33,7 +34,6 @@ var makeBoard = function() {
             $('.wrapper').append(block);
         }
         else {
-            block.attr('id', i); 
             $('.wrapper').append(block);
         }
     }
@@ -42,28 +42,33 @@ var makeBoard = function() {
 
 
 var move = function() {
-    var currentPosition = snake.position;
+    var snakeHead = snake.position[snake.position.length -1];
     var nextPosition = 0;
+    var snakeTail = snake.position[0];
     if (snake.direction === "d") {
-        nextPosition = snake.position + 1;
+        nextPosition = snakeHead + 1;
     }
     else if (snake.direction === "a") {
-        nextPosition = snake.position - 1;
+        nextPosition = snakeHead - 1;
     }
     else if (snake.direction === "w") {
-        nextPosition = snake.position - 40;
+        nextPosition = snakeHead - 40;
     }
     else if (snake.direction === "s"){
-        nextPosition = snake.position + 40;
+        nextPosition = snakeHead + 40;
     }
-    $('#' + currentPosition).removeClass('snake');
+    snake.position.push(nextPosition);
     $('#' + nextPosition).addClass('snake');
-    snake.position = nextPosition;
-    if (snake.position === food.position) {
-        snake.length += 1;
+    if (nextPosition === food.position) {
         $('#' + food.position).removeClass('food');
         generateFood();
     }
+    else {
+        $('#' + snakeTail).removeClass('snake');
+        snake.position.shift();
+    }
+
+
     //if (snake.position[0] >= 41 || snake.position[0] <= 0 || snake.position[1] <= 0 || snake.position[1] >= 41){
     //    $('.wrapper').html('');
     //    $('.wrapper').append('<div class="gameover">GAME OVER</div>');
