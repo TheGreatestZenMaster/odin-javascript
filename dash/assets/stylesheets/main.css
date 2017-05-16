@@ -1,0 +1,9 @@
+.wrapper {
+  width: 400px;
+  height: 100px;
+  background: lightblue;
+  color:white;
+  font-size: 48px;
+  line-height: 100px;
+  text-align:center;
+}
